@@ -7,44 +7,44 @@
 </div>
 
 <match-component></match-component>
+<match-component></match-component>
 
 <template id="match-component-tpl">
     <style>
         #match {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
             margin: auto;
             margin-top: 25px;
             width: 35%;
             height: 75px;
             background-color: grey;
             border-radius: 20px;
-            column-count: 5;
-        }
-
-        p {
-            margin-left: -185px;
-            text-align: center;
-            vertical-align: middle;
-            line-height: 75px;
         }
 
         #score {
+            display: flex;
             font-size: 20px;
             font-weight: bold;
         }
 
         button {
             visibility: visible;
-            margin-left: -65px;
-            margin-top: 27.5px;
+            display: flex;
+            width: 25px;
+            height: 25px;
+            align-items: center;
+            justify-content: center;
         }
     </style>
 
     <div id="match">
-        <p>team 1</p>
-        <button>+</button>
-        <p id="score">1 - 0</p>
-        <button>+</button>
-        <p>team 2</p>
+        <p id="name_t1">team 1</p>
+        <button id="button_t1">+</button>
+        <p id="score">0 - 0</p>
+        <button id="button_t2">+</button>
+        <p id="name_t2">team 2</p>
     </div>
 </template>
 
