@@ -2,10 +2,6 @@
     ViewData["Title"] = "Home Page";
 }
 
-<head>
-    <script src="js/site.js"></script>
-</head>
-
 <div class="text-center">
     <h1 class="display-4">Wedstrijd overzicht</h1>
 </div>
@@ -17,7 +13,7 @@
 <!--Template-->
 <template id="match-component-tpl">
     <style>
-        #match {
+        .match {
             display: flex;
             align-items: center;
             justify-content: space-around;
@@ -44,12 +40,12 @@
             justify-content: center;
         }
     </style>
-
-    <div id="match">
+    
+    <div id="match1" class="match">
         <p id="name_t1">team 1</p>
-        <button id="button_t1">+</button>
+        <button id="button_t1" onclick="addScore(this.closest('div').id, '1')">+</button>
         <p id="score">0 - 0</p>
-        <button id="button_t2">+</button>
+        <button id="button_t2" onclick="addScore(this.closest('div').id, '2')">+</button>
         <p id="name_t2">team 2</p>
     </div>
 </template>
@@ -61,9 +57,28 @@
             let template = document.getElementById("match-component-tpl");
             let templateContent = template.content;
 
-            const shadowRoot = this.attachShadow({ mode: "closed" });
+            const shadowRoot = this.attachShadow({ mode: "open" });
             shadowRoot.appendChild(templateContent.cloneNode(true));
         }
     }
     customElements.define("match-component", match_component);
+
+    function createMatch() {
+        console.log("clicked");
+    }
+
+    function addScore(matchId, team){
+        let match;
+
+        document.querySelectorAll('match-component').forEach((element) => {
+            let div = element.shadowRoot.getElementById(matchId);
+
+            if(div != null){
+                match = div;
+                return;
+            }
+        });
+
+        console.log(match);
+    }
 </script>
