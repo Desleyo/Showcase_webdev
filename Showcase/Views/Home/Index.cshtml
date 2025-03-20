@@ -3,5 +3,53 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcom op dezuh suupur koele pagiena</h1>
+    <h1 class="display-4">Wedstrijd overzicht</h1>
 </div>
+
+<match-component></match-component>
+
+<template id="match-component-tpl">
+    <style>
+        #match {
+            margin: auto;
+            margin-top: 25px;
+            width: 35%;
+            height: 75px;
+            background-color: grey;
+            border-radius: 20px;
+            column-count: 3;
+        }
+
+        p {
+            margin-left: -315px;
+            text-align: center;
+            vertical-align: middle;
+            line-height: 75px;
+        }
+
+        #score {
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+
+    <div id="match">
+        <p>team 1</p>
+        <p id="score">1 - 0</p>
+        <p>team 2</p>
+    </div>
+</template>
+
+<script>
+    class match_component extends HTMLElement {
+        constructor() {
+            super();
+            let template = document.getElementById("match-component-tpl");
+            let templateContent = template.content;
+
+            const shadowRoot = this.attachShadow({ mode: "closed" });
+            shadowRoot.appendChild(templateContent.cloneNode(true));
+        }
+    }
+    customElements.define("match-component", match_component);
+</script>
