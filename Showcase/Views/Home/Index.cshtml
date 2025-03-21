@@ -1,6 +1,9 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> signInManager
+
+@{
     ViewData["Title"] = "Home Page";
-    
+
     bool isAdmin = User.IsInRole("Admin");
 }
 
@@ -19,38 +22,44 @@
 <template id="match-component-tpl">
     <style>
         #match {
-            display: flex;
-            align-items: center;
-            justify-content: space-around;
-            margin: auto;
-            margin-top: 25px;
-            width: 35%;
-            height: 75px;
-            background-color: grey;
-            border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        margin: auto;
+        margin-top: 25px;
+        width: 35%;
+        height: 75px;
+        background-color: grey;
+        border-radius: 20px;
         }
 
         #score {
-            display: flex;
-            font-size: 20px;
-            font-weight: bold;
+        display: flex;
+        font-size: 20px;
+        font-weight: bold;
         }
 
         button {
-            visibility: visible;
-            display: flex;
-            width: 25px;
-            height: 25px;
-            align-items: center;
-            justify-content: center;
+        visibility: visible;
+        display: flex;
+        width: 25px;
+        height: 25px;
+        align-items: center;
+        justify-content: center;
         }
     </style>
-    
+
     <div id="match">
         <p id="name_t1">team 1</p>
-        <button id="button_t1" onclick="addScore(this.nextElementSibling, '1')">+</button>
+        @if (signInManager.IsSignedIn(User))
+        {
+            <button id="button_t1" onclick="addScore(this.nextElementSibling, '1')">+</button>
+        }
         <p id="score">0 - 0</p>
-        <button id="button_t2" onclick="addScore(this.previousElementSibling, '2')">+</button>
+        @if (signInManager.IsSignedIn(User))
+        {
+            <button id="button_t2" onclick="addScore(this.previousElementSibling, '2')">+</button>
+        }
         <p id="name_t2">team 2</p>
     </div>
 </template>
