@@ -13,7 +13,7 @@
 <!--Template-->
 <template id="match-component-tpl">
     <style>
-        .match {
+        #match {
             display: flex;
             align-items: center;
             justify-content: space-around;
@@ -41,10 +41,10 @@
         }
     </style>
     
-    <div id="match1" class="match">
+    <div id="match">
         <p id="name_t1">team 1</p>
         <button id="button_t1" onclick="addScore(this.nextElementSibling, '1')">+</button>
-        <p id="score">4 - 2</p>
+        <p id="score">0 - 0</p>
         <button id="button_t2" onclick="addScore(this.previousElementSibling, '2')">+</button>
         <p id="name_t2">team 2</p>
     </div>
