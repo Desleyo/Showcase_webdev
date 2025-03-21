@@ -1,12 +1,17 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    
+    bool isAdmin = User.IsInRole("Admin");
 }
 
 <div class="text-center">
     <h1 class="display-4">Wedstrijd overzicht</h1>
 </div>
 
-<button id="reset-match" onclick="resetMatch()" class="btn btn-lg btn-primary reset-match">Wedstrijd resetten</button>
+@if (isAdmin)
+{
+    <button id="reset-match" onclick="resetMatch()" class="btn btn-lg btn-primary reset-match">Wedstrijd resetten</button>    
+}
 
 <match-component></match-component>
 
