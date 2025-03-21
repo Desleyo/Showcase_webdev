@@ -43,9 +43,9 @@
     
     <div id="match1" class="match">
         <p id="name_t1">team 1</p>
-        <button id="button_t1" onclick="addScore(this.closest('div').id, '1')">+</button>
-        <p id="score">0 - 0</p>
-        <button id="button_t2" onclick="addScore(this.closest('div').id, '2')">+</button>
+        <button id="button_t1" onclick="addScore(this.nextElementSibling, '1')">+</button>
+        <p id="score">4 - 2</p>
+        <button id="button_t2" onclick="addScore(this.previousElementSibling, '2')">+</button>
         <p id="name_t2">team 2</p>
     </div>
 </template>
@@ -67,18 +67,15 @@
         console.log("clicked");
     }
 
-    function addScore(matchId, team){
-        let match;
+    function addScore(score, team){
+        let scoreContent = score.textContent;       
+        let scores = scoreContent.split(" ");
 
-        document.querySelectorAll('match-component').forEach((element) => {
-            let div = element.shadowRoot.getElementById(matchId);
+        let score_t1 = scores[0];
+        let score_t2 = scores[2];
 
-            if(div != null){
-                match = div;
-                return;
-            }
-        });
-
-        console.log(match);
+        team == 1 ? score_t1++ : score_t2++;
+        let newScore = score_t1 + " - " + score_t2;
+        score.textContent = newScore;
     }
 </script>
