@@ -51,6 +51,23 @@
 </template>
 
 <script>
+    const ws = new WebSocket("ws://localhost:8082");
+
+    ws.addEventListener("open", () => {
+        console.log("Connected");
+    });
+
+    ws.addEventListener("message", e => {
+        const arr = JSON.parse(e.data).data;
+        let newData = '';
+        arr.forEach((element) => {
+            newData+=String.fromCharCode(element);
+        });
+
+        console.log(newData);
+        displayNewScore(newData);
+    });
+
     class match_component extends HTMLElement {
         constructor() {
             super();
@@ -68,7 +85,7 @@
     }
 
     function addScore(score, team){
-        let scoreContent = score.textContent;       
+        let scoreContent = score.textContent;
         let scores = scoreContent.split(" ");
 
         let score_t1 = scores[0];
@@ -76,6 +93,12 @@
 
         team == 1 ? score_t1++ : score_t2++;
         let newScore = score_t1 + " - " + score_t2;
+        
+        ws.send(newScore);
+    }
+
+    function displayNewScore(newScore){
+        let score = document.querySelector("match-component").shadowRoot.getElementById("score");
         score.textContent = newScore;
     }
 </script>
