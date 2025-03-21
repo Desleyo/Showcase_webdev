@@ -6,7 +6,7 @@
     <h1 class="display-4">Wedstrijd overzicht</h1>
 </div>
 
-<button id="create-match" onclick="createMatch()" class="btn btn-lg btn-primary create-match">Wedstrijd aanmaken</button>
+<button id="reset-match" onclick="resetMatch()" class="btn btn-lg btn-primary reset-match">Wedstrijd resetten</button>
 
 <match-component></match-component>
 
@@ -80,10 +80,6 @@
     }
     customElements.define("match-component", match_component);
 
-    function createMatch() {
-        console.log("clicked");
-    }
-
     function addScore(score, team){
         let scoreContent = score.textContent;
         let scores = scoreContent.split(" ");
@@ -100,5 +96,9 @@
     function displayNewScore(newScore){
         let score = document.querySelector("match-component").shadowRoot.getElementById("score");
         score.textContent = newScore;
+    }
+
+    function resetMatch() {
+        ws.send("0 - 0");
     }
 </script>

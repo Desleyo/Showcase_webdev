@@ -21,7 +21,7 @@ body {
   margin-bottom: 60px;
 }
 
-.create-match {
+.reset-match {
     display: flex;
     justify-self: flex-end;
 }
