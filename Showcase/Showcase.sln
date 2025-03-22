@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Showcase", "Showcase.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Websocket", "..\Websocket\Websocket.csproj", "{018517D5-F9E9-46B0-80A6-C9739EABCB3D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShowcaseTests", "..\ShowcaseTests\ShowcaseTests.csproj", "{ED7F91A1-A640-4545-A93C-E4FC5BC2A5A2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{018517D5-F9E9-46B0-80A6-C9739EABCB3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{018517D5-F9E9-46B0-80A6-C9739EABCB3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{018517D5-F9E9-46B0-80A6-C9739EABCB3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED7F91A1-A640-4545-A93C-E4FC5BC2A5A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED7F91A1-A640-4545-A93C-E4FC5BC2A5A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED7F91A1-A640-4545-A93C-E4FC5BC2A5A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED7F91A1-A640-4545-A93C-E4FC5BC2A5A2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
