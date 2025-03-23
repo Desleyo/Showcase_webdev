@@ -1,4 +1,4 @@
-﻿const url = 'https://localhost:7110/';
+﻿const url = 'https://localhost:7110/'
 
 context('Login', () => {
     beforeEach(() => {
