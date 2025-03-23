@@ -1,6 +1,6 @@
 ﻿const url = 'https://localhost:7110/'
 
-context('Register', () => {
+context('2-Register', () => {
     beforeEach(() => {
         //Visit home page
         cy.visit(url)

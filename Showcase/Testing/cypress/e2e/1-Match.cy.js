@@ -1,6 +1,6 @@
 ﻿const url = 'https://localhost:7110/'
 
-context('Match', () => {
+context('1-Match', () => {
     beforeEach(() => {
         //Visit home page
         cy.visit(url)
@@ -11,8 +11,8 @@ context('Match', () => {
 
         //Fill in input fields and submit
         cy.get('form').within(() => {
-            cy.get('input[type=email]').type('admin@test.com')
-            cy.get('input[type=password]').type('Test-123')
+            cy.get('input[type=email]').type(Cypress.env('admin_email'))
+            cy.get('input[type=password]').type(Cypress.env('admin_password'), { log: false })
             cy.get('button[type=submit]').click()
         });
     })

@@ -1,6 +1,6 @@
 ﻿const url = 'https://localhost:7110/'
 
-context('Login', () => {
+context('3-Login', () => {
     beforeEach(() => {
         //Visit home page
         cy.visit(url)
@@ -13,22 +13,22 @@ context('Login', () => {
     it('Login without 2FA', () => {
         //Fill in input fields and submit
         cy.get('form').within(() => {
-            cy.get('input[type=email]').type('admin@test.com')
-            cy.get('input[type=password]').type('Test-123')
+            cy.get('input[type=email]').type(Cypress.env('admin_email'))
+            cy.get('input[type=password]').type(Cypress.env('admin_password'), { log: false })
             cy.get('button[type=submit]').click()
         });
 
         //Check if back on homepage and logged in
         cy.url().should('eq', url)
-        cy.contains('Hello admin@test.com!')
+        cy.contains('Hello ' + Cypress.env('admin_email') + '!')
         cy.contains('Logout')
     })
 
     it('Reach 2FA page when logging in', () => {
         //Fill in input fields and submit
         cy.get('form').within(() => {
-            cy.get('input[type=email]').type('desleyoord@gmail.com')
-            cy.get('input[type=password]').type('Test-123')
+            cy.get('input[type=email]').type(Cypress.env('user_email'))
+            cy.get('input[type=password]').type(Cypress.env('user_password'), { log: false })
             cy.get('button[type=submit]').click()
         });
 
